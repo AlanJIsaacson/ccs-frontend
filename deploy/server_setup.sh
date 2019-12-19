@@ -9,6 +9,13 @@ FIRST_RUN_PATH="/codedeploy.server_setup"
 echo "> Updating system software..."
 sudo yum update -y
 
+echo "> Set timezone..."
+    sudo -rm -f /etc/sysconfig/clock
+    sudo mv -f \
+        "$SCRIPTDIR/$DEPLOYMENT_TYPE/files/clock" \
+        /etc/sysconfig/clock
+    sudo ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+
 if [ ! -e "$FIRST_RUN_PATH" ]; then
     echo "> Running once-only deployment tasks..."
 
@@ -57,7 +64,7 @@ if [ ! -e "$FIRST_RUN_PATH" ]; then
     echo "> > chown'ing php config file..."
     sudo chown root:root \
         "$SCRIPTDIR/files/99-custom.ini"
-        
+
     echo "> > chmod'ing php config file..."
     sudo chmod 644 \
         "$SCRIPTDIR/files/99-custom.ini"
@@ -66,7 +73,7 @@ if [ ! -e "$FIRST_RUN_PATH" ]; then
     sudo mv -f \
         "$SCRIPTDIR/files/99-custom.ini" \
         /etc/php.d/
-        
+
     echo "> > chown'ing logrotate config files..."
     sudo chown root:root \
         "$SCRIPTDIR/files/applogs"
