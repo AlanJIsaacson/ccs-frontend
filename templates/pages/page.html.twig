@@ -16,9 +16,9 @@
     {# Pass all the variables along #}
     {% include '_components/hero.html.twig' with {'image': page.content.hero_image, 'heading': page.content.hero_heading, 'content': page.content.hero_content, 'cta_label': page.content.hero_cta_label, 'cta_destination': page.content.hero_cta_destination} %}
 
-
+{# each section will need their own wrapper from now on #}
     <!-- required wrapper 1 -->
-    <div class="govuk-width-container">
+    <div class="--govuk-width-container">
 
         <!-- If your design requires them, you should place components such as breadcrumbs, back link and phase banner inside this wrapper so that they sit directly underneath the header. -->
 
@@ -33,6 +33,7 @@
             </p>
         </div>#}
 
+        <div class="govuk-width-container">
 
         <div class="govuk-breadcrumbs">
             <ol class="govuk-breadcrumbs__list">
@@ -48,6 +49,8 @@
                     {{ page.title }}
                 </li>
             </ol>
+        </div>
+
         </div>
 
 
