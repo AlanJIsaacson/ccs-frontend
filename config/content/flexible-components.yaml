@@ -109,4 +109,9 @@ components:
           type: text
         sectors_content:
           type: richtext
+  free_text_free_text:
+    free_text_free_text_left_content:
+      type: richtext
+    free_text_free_text_right_content:
+      type: richtext
 
